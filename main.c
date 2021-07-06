@@ -7,9 +7,6 @@
 #define width 700
 #define height 600
 
-#define MAX_p 50
-#define Bornee 10000
-
 typedef struct
 {
     double x;
@@ -26,9 +23,11 @@ Complex addComplx(Complex, Complex);
 
 Complex eqBurningShip(Complex Z, Complex c)
 {
-    if(Z.x < 0) Z.x *= -1;
-    if(Z.y < 0) Z.y *= -1;
-    return addComplx(sq(toComplex( Z.x ,Z.y )), c);
+    if (Z.x < 0)
+        Z.x *= -1;
+    if (Z.y < 0)
+        Z.y *= -1;
+    return addComplx(sq(toComplex(Z.x, Z.y)), c);
 }
 
 void Draw(SDL_Renderer *renderer, int range, Complex center, int size, int iteration)
@@ -53,18 +52,17 @@ void Draw(SDL_Renderer *renderer, int range, Complex center, int size, int itera
                 if (mod(z) > 2)
                     break;
             }
-            //if (i == iteration)
-            if(i < iteration){
-                int grayscale = i*255/iteration;
-            SDL_SetRenderDrawColor(renderer,0 ,0 ,grayscale , 255);
+
+            if (i < iteration)
+            {
+                int grayscale = i * 255 / iteration;
+                SDL_SetRenderDrawColor(renderer, 10, 10, grayscale, 255);
             }
             else
-            SDL_SetRenderDrawColor(renderer,0 ,0 ,0 , 255);
+                SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
             SDL_RenderDrawPoint(renderer, k, j);
-            
         }
     }
-
 }
 
 int main(int argc, char *argv[])
@@ -97,9 +95,7 @@ int main(int argc, char *argv[])
         SDL_RenderClear(renderer);
 
         //draw
-        SDL_SetRenderDrawColor(renderer, 30, 200, 100, 255); // set color
         Draw(renderer, 2, toComplex(0.158, 1.9), 4500, 400); //principal function // seccond ship coordinates
-        
 
         //Show the renderings
         SDL_RenderPresent(renderer);
