@@ -1,5 +1,5 @@
 # Fractal-Burning-ship
 
-to execute in VScode, a .vscode directory has to be created with proprieties.json file, then excecute with the batch file.
+Run batch file to excute.
 
-SDL2 is needed !
+Install SDL2 !
